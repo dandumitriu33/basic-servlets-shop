@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 
 @WebServlet(name = "WebShopServlet", urlPatterns = {"/shop"}, loadOnStartup = 1)
 public class WebShopServlet extends HttpServlet {
@@ -38,28 +39,34 @@ public class WebShopServlet extends HttpServlet {
                                     "<th scope=\"col\"></th>"+
                                 "</tr>"+
                             "</thead>"+
-                            "<tbody>"+
-                                "<tr>"+
-                                    "<th scope=\"row\">1</th>"+
-                                    "<td>Asus Laptop</td>"+
-                                    "<td>1600 USD</td>"+
-                                    "<td><button type=\"button\" class=\"btn btn-light\">Add</button></td>"+
-                                    "<td><button type=\"button\" class=\"btn btn-light\">Remove</button></td>"+
-                                "</tr>"+
-                                "<tr>"+
-                                    "<th scope=\"row\">2</th>"+
-                                    "<td>Harry Potter Ebook</td>"+
-                                    "<td>50 USD</td>"+
-                                    "<td><button type=\"button\" class=\"btn btn-light\">Add</button></td>"+
-                                    "<td><button type=\"button\" class=\"btn btn-light\">Remove</button></td>"+
-                                "</tr>"+
-                                "<tr>"+
-                                    "<th scope=\"row\">3</th>"+
-                                    "<td>Lego</td>"+
-                                    "<td>80 USD</td>"+
-                                    "<td><button type=\"button\" class=\"btn btn-light\">Add</button></td>"+
-                                    "<td><button type=\"button\" class=\"btn btn-light\">Remove</button></td>"+
-                                "</tr>"+
+                            "<tbody>");
+
+
+        Stock currentStock = new Stock();
+        Item p1 = new Item("Asus Laptop", 1600);
+        Item p2 = new Item("Harry Potter Ebook", 50);
+        Item p3 = new Item("Lego Set", 80);
+
+        currentStock.add(p1);
+        currentStock.add(p2);
+        currentStock.add(p3);
+        Iterator<Item> i = currentStock.shopStock.iterator();
+        Item currentProduct;
+        while(i.hasNext()){
+            currentProduct = i.next();
+            out.println(
+                    "<tr>"+
+                        "<th scope=\"row\">"+ currentProduct.id +"</th>"+
+                        "<td>"+ currentProduct.name +"</td>"+
+                        "<td>"+ currentProduct.price +" USD</td>"+
+                        "<td><button type=\"button\" class=\"btn btn-light\">Add</button></td>"+
+                        "<td><button type=\"button\" class=\"btn btn-light\">Remove</button></td>"+
+                    "</tr>"
+
+
+            );
+        }
+        out.println(
                             "</tbody>"+
                         "</table>"+
                         "<div><a href=\"/cart\"><button type=\"button\" class=\"btn btn-light\">Check Shopping Cart</button></a></div>"+

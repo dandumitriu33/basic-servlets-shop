@@ -55,7 +55,7 @@ public class ShoppingCartServlet extends HttpServlet {
                         "</tbody>"+
                         "</table>"+
                         "<div>Total: 230 USD</div>"+
-                        "<div><a href=\"/shop\">Back To Shop</a></div>"+
+                        "<div><a href=\"/shop\"><button type=\"button\" class=\"btn btn-light\">Shop</button></a></div>"+
                         "</body></html>"
         );
     }
