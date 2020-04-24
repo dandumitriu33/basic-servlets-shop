@@ -19,7 +19,9 @@ public class ServletWithAnnotations extends HttpServlet {
 
         out.println(
                 "<html>\n" +
-                "<head><title>" + title + "</title></head>\n" +
+                "<head><title>" + title + "</title>"+
+                "<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">" +
+                "</head>\n" +
                 "<body>\n" +
                 "<h1 align = \"center\">" + title + "</h1>\n" +
                 "<ul>\n" +
@@ -27,6 +29,7 @@ public class ServletWithAnnotations extends HttpServlet {
                 "<li><b>Last Name</b>: " + request.getParameter("last_name") + "\n" +
                 "</ul>\n" +
                 "<div>Visit another servlet: <a href=\"/another\">Visit the other servlet</a></div>" +
+                "<button type=\"button\" class=\"btn btn-primary\">Primary</button>" +
                 "</body></html>"
         );
     }
