@@ -28,17 +28,41 @@ public class WebShopServlet extends HttpServlet {
                         "</head>\n" +
                         "<body>\n" +
                         "<h1 align = \"center\">" + title + "</h1>\n" +
-                        "<ul>\n" +
-                        "<li><b>First Name</b>: " + request.getParameter("first_name") + "\n" +
-                        "<li><b>Last Name</b>: " + request.getParameter("last_name") + "\n" +
-                        "</ul>\n" +
-                        "<div>Visit another servlet: <a href=\"/another\">Visit the other servlet</a></div>" +
-                        "<button type=\"button\" class=\"btn btn-primary\">Primary</button>" +
-
-
-
-
-
+                        "<table class=\"table table-striped\">"+
+                            "<thead>"+
+                                "<tr>"+
+                                    "<th scope=\"col\">#</th>"+
+                                    "<th scope=\"col\">Name</th>"+
+                                    "<th scope=\"col\">Price</th>"+
+                                    "<th scope=\"col\"></th>"+
+                                    "<th scope=\"col\"></th>"+
+                                "</tr>"+
+                            "</thead>"+
+                            "<tbody>"+
+                                "<tr>"+
+                                    "<th scope=\"row\">1</th>"+
+                                    "<td>Asus Laptop</td>"+
+                                    "<td>1600 USD</td>"+
+                                    "<td><button type=\"button\" class=\"btn btn-light\">Add</button></td>"+
+                                    "<td><button type=\"button\" class=\"btn btn-light\">Remove</button></td>"+
+                                "</tr>"+
+                                "<tr>"+
+                                    "<th scope=\"row\">2</th>"+
+                                    "<td>Harry Potter Ebook</td>"+
+                                    "<td>50 USD</td>"+
+                                    "<td><button type=\"button\" class=\"btn btn-light\">Add</button></td>"+
+                                    "<td><button type=\"button\" class=\"btn btn-light\">Remove</button></td>"+
+                                "</tr>"+
+                                "<tr>"+
+                                    "<th scope=\"row\">3</th>"+
+                                    "<td>Lego</td>"+
+                                    "<td>80 USD</td>"+
+                                    "<td><button type=\"button\" class=\"btn btn-light\">Add</button></td>"+
+                                    "<td><button type=\"button\" class=\"btn btn-light\">Remove</button></td>"+
+                                "</tr>"+
+                            "</tbody>"+
+                        "</table>"+
+                        "<div>Check <a href=\"/cart\">Shopping Cart</a></div>" +
                         "</body></html>"
         );
     }
