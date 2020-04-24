@@ -11,6 +11,9 @@ import java.util.Iterator;
 
 @WebServlet(name = "WebShopServlet", urlPatterns = {"/shop"}, loadOnStartup = 1)
 public class WebShopServlet extends HttpServlet {
+
+    Stock currentStock = new Stock();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -42,14 +45,6 @@ public class WebShopServlet extends HttpServlet {
                             "<tbody>");
 
 
-        Stock currentStock = new Stock();
-        Item p1 = new Item("Asus Laptop", 1600);
-        Item p2 = new Item("Harry Potter Ebook", 50);
-        Item p3 = new Item("Lego Set", 80);
-
-        currentStock.add(p1);
-        currentStock.add(p2);
-        currentStock.add(p3);
         Iterator<Item> i = currentStock.shopStock.iterator();
         Item currentProduct;
         while(i.hasNext()){
