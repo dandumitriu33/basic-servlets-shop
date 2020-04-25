@@ -15,6 +15,7 @@ public class ShoppingCartServlet extends HttpServlet {
     Item p1 = Stock.p1;
     Item p2 = Stock.p2;
     Item p3 = Stock.p3;
+    int total = 0;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,16 +25,34 @@ public class ShoppingCartServlet extends HttpServlet {
         if (productId.substring(0, 3).equals("add")) {
             System.out.println("entered Add procedure");
             System.out.println(productId.substring(4));
-            if (productId.substring(4).equals("1")) myCart.add(p1);
-            else if (productId.substring(4).equals("2")) myCart.add(p2);
-            else if (productId.substring(4).equals("3")) myCart.add(p3);
+            if (productId.substring(4).equals("1")) {
+                myCart.add(p1);
+                total += p1.price;
+            }
+            else if (productId.substring(4).equals("2")) {
+                myCart.add(p2);
+                total += p2.price;
+            }
+            else if (productId.substring(4).equals("3")) {
+                myCart.add(p3);
+                total += p3.price;
+            }
         }
         else if (productId.substring(0, 6).equals("remove")) {
             System.out.println("Entered Remove procedure");
             System.out.println(productId.substring(6));
-            if (productId.substring(7).equals("1")) myCart.remove(p1);
-            else if (productId.substring(7).equals("2")) myCart.remove(p2);
-            else if (productId.substring(7).equals("3")) myCart.remove(p3);
+            if (productId.substring(7).equals("1")) {
+                myCart.remove(p1);
+                total -= p1.price;
+            }
+            else if (productId.substring(7).equals("2")) {
+                myCart.remove(p2);
+                total -= p2.price;
+            }
+            else if (productId.substring(7).equals("3")) {
+                myCart.remove(p3);
+                total -= p3.price;
+            }
         }
 
         for (Item i:myCart.list) {
@@ -64,26 +83,20 @@ public class ShoppingCartServlet extends HttpServlet {
                         "<th scope=\"col\">Price</th>"+
                         "</tr>"+
                         "</thead>"+
-                        "<tbody>"+
-                        "<tr>"+
-                        "<td>Harry Potter Ebook</td>"+
-                        "<td>50 USD</td>"+
-                        "</tr>"+
-                        "<tr>"+
-                        "<td>Harry Potter Ebook</td>"+
-                        "<td>50 USD</td>"+
-                        "</tr>"+
-                        "<tr>"+
-                        "<td>Harry Potter Ebook</td>"+
-                        "<td>50 USD</td>"+
-                        "</tr>"+
-                        "<tr>"+
-                        "<td>Lego</td>"+
-                        "<td>80 USD</td>"+
-                        "</tr>"+
+                        "<tbody>");
+        for (Item i : myCart.list) {
+            out.println(
+                    "<tr>"+
+                        "<td>" + i.name + "</td>"+
+                        "<td>" + i.price + "USD</td>"+
+                    "</tr>"
+            );
+        }
+        out.println(
+
                         "</tbody>"+
                         "</table>"+
-                        "<div>Total: 230 USD</div>"+
+                        "<div>Total: " + total + " USD</div>"+
                         "<div><a href=\"/shop\"><button type=\"button\" class=\"btn btn-light\">Shop</button></a></div>"+
                         "</body></html>"
         );
