@@ -88,7 +88,7 @@ public class ShoppingCartServlet extends HttpServlet {
             out.println(
                     "<tr>"+
                         "<td>" + i.name + "</td>"+
-                        "<td>" + i.price + "USD</td>"+
+                        "<td>" + i.price + " USD</td>"+
                     "</tr>"
             );
         }
