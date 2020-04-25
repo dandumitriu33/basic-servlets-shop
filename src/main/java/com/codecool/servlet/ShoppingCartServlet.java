@@ -10,8 +10,29 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "ShoppingCartServlet", urlPatterns = {"/cart"}, loadOnStartup = 1)
 public class ShoppingCartServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    Cart myCart = new Cart();
+    Item p1 = Stock.p1;
+    Item p2 = Stock.p2;
+    Item p3 = Stock.p3;
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("reached cart");
+        String productId = request.getParameter("product_id");
+        System.out.println(productId);
+        if (productId.substring(0, 3).equals("add")) {
+            System.out.println("entered Add procedure");
+            System.out.println(productId.substring(4));
+            if (productId.substring(4).equals("1")) myCart.add(p1);
+            else if (productId.substring(4).equals("2")) myCart.add(p2);
+            else if (productId.substring(4).equals("3")) myCart.add(p3);
+        }
+        for (Item i:myCart.list) {
+            System.out.println(i.name);
+
+        }
+        response.sendRedirect("shop");
     }
 
     @Override
