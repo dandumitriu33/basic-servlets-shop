@@ -28,6 +28,14 @@ public class ShoppingCartServlet extends HttpServlet {
             else if (productId.substring(4).equals("2")) myCart.add(p2);
             else if (productId.substring(4).equals("3")) myCart.add(p3);
         }
+        else if (productId.substring(0, 6).equals("remove")) {
+            System.out.println("Entered Remove procedure");
+            System.out.println(productId.substring(6));
+            if (productId.substring(7).equals("1")) myCart.remove(p1);
+            else if (productId.substring(7).equals("2")) myCart.remove(p2);
+            else if (productId.substring(7).equals("3")) myCart.remove(p3);
+        }
+
         for (Item i:myCart.list) {
             System.out.println(i.name);
 

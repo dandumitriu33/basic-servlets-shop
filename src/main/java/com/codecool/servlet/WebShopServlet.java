@@ -68,7 +68,13 @@ public class WebShopServlet extends HttpServlet {
                                 "<input type=\"submit\" class=\"btn btn-light\" value=\"Add\">"+
                             "</form>" +
                         "</td>"+
-                        "<td><button type=\"button\" class=\"btn btn-light\" name=\"remove_"+ currentProduct.id +"\">Remove</button></td>"+
+                        "<td>" +
+                            "<form action=\"cart\" method=\"post\"> " +
+                                "<input type=\"hidden\" name=\"product_id\" value=\"remove_"+ currentProduct.id +"\" >"+
+                                "<input type=\"submit\" class=\"btn btn-light\" value=\"Remove\">"+
+                            "</form>" +
+                        "</td>" +
+//                        "<td><button type=\"button\" class=\"btn btn-light\" name=\"remove_"+ currentProduct.id +"\">Remove</button></td>"+
                     "</tr>"
 
 
